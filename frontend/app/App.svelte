@@ -1,9 +1,9 @@
 <script lang="ts">
   import Router from "svelte-spa-router";
   import { wrap } from "svelte-spa-router/wrap";
-  import Home from "./pages/Home.svelte";
 
-  import NotFound from "./pages/NotFound.svelte";
+  import Home from "./routes/Home.svelte";
+  import NotFound from "./routes/NotFound.svelte";
 
   const routes = {
     "/": Home,
@@ -11,4 +11,6 @@
   };
 </script>
 
-<Router {routes} />
+<div class="bg-black">
+  <Router {routes} />
+</div>
