@@ -5,8 +5,6 @@ import (
 	"io/fs"
 )
 
-// DistFS holds the static files that need to be served
-// as part of the frontend.
 var DistFS = mustSubFS(distFS, "dist")
 
 //go:embed dist/**
