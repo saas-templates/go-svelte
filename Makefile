@@ -14,7 +14,7 @@ tidy:
 
 fe:
 	@echo "Building frontend..."
-	@cd frontend && vite build
+	@cd ui && yarn && yarn build
 
 be:
 	@echo "Building backend..."

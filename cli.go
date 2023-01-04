@@ -13,9 +13,9 @@ import (
 	"gopkg.in/yaml.v2"
 
 	"github.com/saas-templates/go-svelte/api"
-	"github.com/saas-templates/go-svelte/frontend"
 	"github.com/saas-templates/go-svelte/pkg/httputils"
 	"github.com/saas-templates/go-svelte/pkg/log"
+	"github.com/saas-templates/go-svelte/ui"
 )
 
 func newCLI(ctx context.Context) *cobra.Command {
@@ -44,7 +44,7 @@ func cmdServe() *cobra.Command {
 			cfg := loadConf(cmd)
 
 			router := chi.NewRouter()
-			router.Mount("/", http.FileServer(http.FS(frontend.DistFS)))
+			router.Mount("/", http.FileServer(http.FS(ui.DistFS)))
 			router.Mount("/api", api.Router(cfg.API))
 
 			log.Infof(cmd.Context(), "listening at '%s'...", cfg.Addr)

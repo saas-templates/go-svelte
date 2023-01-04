@@ -1,4 +1,4 @@
-package frontend
+package ui
 
 import (
 	"embed"
