@@ -3,7 +3,6 @@ package main
 import (
 	"context"
 	"fmt"
-	"net/http"
 	"os"
 	"time"
 
@@ -44,7 +43,7 @@ func cmdServe() *cobra.Command {
 			cfg := loadConf(cmd)
 
 			router := chi.NewRouter()
-			router.Mount("/", http.FileServer(http.FS(ui.DistFS)))
+			router.Mount("/", ui.Handler())
 			router.Mount("/api", api.Router(cfg.API))
 
 			log.Infof(cmd.Context(), "listening at '%s'...", cfg.Addr)
