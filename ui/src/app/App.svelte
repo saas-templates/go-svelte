@@ -1,7 +1,5 @@
 <script lang="ts">
   import Router from "svelte-spa-router";
-  import { wrap } from "svelte-spa-router/wrap";
-
   import Home from "./routes/Home.svelte";
   import NotFound from "./routes/NotFound.svelte";
 
@@ -11,6 +9,4 @@
   };
 </script>
 
-<div class="bg-black">
-  <Router {routes} />
-</div>
+<Router {routes} restoreScrollState={true} />

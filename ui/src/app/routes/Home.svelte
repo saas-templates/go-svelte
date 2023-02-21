@@ -10,9 +10,11 @@
 
     return () => clearInterval(ih);
   });
+
+  const data = fetch("/api/data").then((resp) => resp.json());
 </script>
 
-<div class="w-full h-screen text-white grid place-items-center">
+<div class="w-full h-screen bg-black text-white grid place-items-center">
   <div class="flex flex-col gap-6 text-center">
     <h1 class="text-red-400 text-3xl">Welcome to Svelte SPA!</h1>
     <p class="max-w-2xl">
@@ -26,5 +28,13 @@
         href="/">Go Home</a
       >
     </div>
+
+    {#await data}
+      <p>Waiting...</p>
+    {:then resp}
+      <p>{JSON.stringify(resp)}</p>
+    {:catch error}
+      <p>Error: {JSON.stringify(error)}</p>
+    {/await}
   </div>
 </div>

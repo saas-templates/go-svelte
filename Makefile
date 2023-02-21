@@ -1,7 +1,7 @@
 NAME:="go-svelte"
 DIST_DIR:="dist"
 
-all: clean tidy be
+all: clean fe tidy be
 
 clean:
 	@echo "Cleaning up old build..."
@@ -11,6 +11,10 @@ tidy:
 	@echo "Reformat and tidy Go..."
 	@gofumpt -l -w .
 	@go mod tidy -v
+
+fe:
+	@echo "Building frontend..."
+	@cd ui && yarn && yarn build
 
 be:
 	@echo "Running go generate..."
