@@ -8,6 +8,10 @@ import (
 	"github.com/go-chi/chi"
 )
 
+type Config struct {
+	// TODO: add API related configurations.
+}
+
 func Router(cfg Config) http.Handler {
 	r := chi.NewRouter()
 
@@ -31,8 +35,4 @@ func Router(cfg Config) http.Handler {
 	})
 
 	return r
-}
-
-type Config struct {
-	// TODO: add API related configurations.
 }
