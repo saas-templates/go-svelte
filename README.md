@@ -2,7 +2,10 @@
 
 - A sample fullstack application with Go as backend (Responsible for serving frontend static files + API if any).
 - `ui` folder:
-  - contains a Vite project with Svelte app and has TailwindCSS + DaisyUI integration.
+  - contains a multi-page Vite project with Svelte (not SvelteKit)
+    - has TailwindCSS + DaisyUI
+    - `src/index.html` is static (useful as landing page)
+    - `src/app/index.html` is SPA and uses `svelte-spa-router` for Routing (hash-based)
   - is also a Go package `ui` that embeds svelte build and exposes `Handler()` which can be mounted on any router for serving frontend. 
 - `make` will build frontend and then trigger go-build which embeds the frontend files and produces one final executable.
 - A 3-stage `Dockerfile` is included that builds frontend, backend and then produces a very small final alpine image with just the binary. 
